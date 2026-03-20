@@ -162,8 +162,10 @@ fun FlowHaltSplashScreen() {
         Image(
             painter = painterResource(id = R.drawable.flowhalt_by_zenyth),
             contentDescription = "FlowHalt by Zenyth",
+            contentScale = androidx.compose.ui.layout.ContentScale.Fit,
             modifier = Modifier
-                .fillMaxWidth(0.8f)
+                .fillMaxWidth(0.95f)
+                .padding(horizontal = 16.dp)
                 .graphicsLayer {
                     alpha = logoAlpha
                     translationY = logoOffset
@@ -202,7 +204,8 @@ fun FlowHaltDashboard(
                 Image(
                     painter = painterResource(id = R.drawable.flowhalt_text),
                     contentDescription = "FlowHalt",
-                    modifier = Modifier.height(32.dp)
+                    contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    modifier = Modifier.height(72.dp)
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
