@@ -1,7 +1,10 @@
 R_DEF: Internal format may change without notice
 local
+drawable flowhalt_by_zenyth
+drawable flowhalt_text
 drawable ic_flowhalt_logo
 drawable ic_zenyth_logo
+drawable zenyth_original
 string app_name
 style Theme.G5Guard
 xml backup_rules

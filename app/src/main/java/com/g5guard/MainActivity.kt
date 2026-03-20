@@ -134,32 +134,23 @@ fun MainAppNavigation(
 
 @Composable
 fun FlowHaltSplashScreen() {
-    var startFlowHaltAnim by remember { mutableStateOf(false) }
-    var startZenythAnim by remember { mutableStateOf(false) }
+    var startAnim by remember { mutableStateOf(false) }
 
     val logoAlpha by animateFloatAsState(
-        targetValue = if (startFlowHaltAnim) 1f else 0f,
+        targetValue = if (startAnim) 1f else 0f,
         animationSpec = tween(durationMillis = 1000, easing = FastOutSlowInEasing),
         label = "logoAlpha"
     )
     
     val logoOffset by animateFloatAsState(
-        targetValue = if (startFlowHaltAnim) 0f else 50f,
+        targetValue = if (startAnim) 0f else 50f,
         animationSpec = tween(durationMillis = 1000, easing = FastOutSlowInEasing),
         label = "logoOffset"
     )
 
-    val zenythAlpha by animateFloatAsState(
-        targetValue = if (startZenythAnim) 1f else 0f,
-        animationSpec = tween(durationMillis = 800, delayMillis = 500),
-        label = "zenythAlpha"
-    )
-
     LaunchedEffect(Unit) {
         delay(300)
-        startFlowHaltAnim = true
-        delay(1200)
-        startZenythAnim = true
+        startAnim = true
     }
 
     Box(
@@ -168,35 +159,16 @@ fun FlowHaltSplashScreen() {
             .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_flowhalt_logo),
-                contentDescription = "FlowHalt Logo",
-                modifier = Modifier
-                    .size(100.dp)
-                    .graphicsLayer {
-                        alpha = logoAlpha
-                        translationY = logoOffset
-                    }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.graphicsLayer { alpha = zenythAlpha }
-            ) {
-                Text(
-                    text = "by ",
-                    fontSize = 18.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.ic_zenyth_logo),
-                    contentDescription = "Zenyth Logo",
-                    modifier = Modifier.height(36.dp)
-                )
-            }
-        }
+        Image(
+            painter = painterResource(id = R.drawable.flowhalt_by_zenyth),
+            contentDescription = "FlowHalt by Zenyth",
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .graphicsLayer {
+                    alpha = logoAlpha
+                    translationY = logoOffset
+                }
+        )
     }
 }
 
@@ -227,13 +199,12 @@ fun FlowHaltDashboard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
-                Text(
-                    text = "FlowHalt",
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = MaterialTheme.colorScheme.primary,
-                    letterSpacing = 1.sp
+                Image(
+                    painter = painterResource(id = R.drawable.flowhalt_text),
+                    contentDescription = "FlowHalt",
+                    modifier = Modifier.height(32.dp)
                 )
+                Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "Intelligent Overage Protection",
                     fontSize = 14.sp,
@@ -362,32 +333,65 @@ fun AboutZenythDialog(onDismiss: () -> Unit) {
         },
         text = {
             Column {
-                Text(text = "How it Works:")
+                Text(
+                    text = "FlowHalt is a precision network utility designed to protect your data.",
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "The Problem:",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "FlowHalt constantly monitors your cellular network type. The moment it detects a drop from 5G to 4G, it automatically pauses your data using your selected method, ensuring you never accidentally consume slow or metered 4G data instead of unlimited 5G data.",
+                    text = "Many \"Unlimited 5G\" plans switch to metered 4G when the signal drops, leading to unexpected data charges during large downloads.",
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "The Solution:",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "FlowHalt monitors your connection in real-time. If your signal degrades from 5G to 4G, it instantly halts data flow using your preferred method (Local VPN or Settings trigger).",
                     fontSize = 14.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Divider()
                 Spacer(modifier = Modifier.height(16.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "Developed by ",
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_zenyth_logo),
+                        contentDescription = "Zenyth Logo",
+                        modifier = Modifier.height(24.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Developed by Zenyth",
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Text(
-                    text = "A one-man startup.",
+                    text = "Built with precision by a one-man startup.",
                     fontSize = 14.sp,
+                    fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                Spacer(modifier = Modifier.height(8.dp))
-                TextButton(
+                Spacer(modifier = Modifier.height(24.dp))
+                Button(
                     onClick = { uriHandler.openUri("https://zenyth-in.vercel.app/") },
-                    contentPadding = PaddingValues(0.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Visit website: zenyth-in.vercel.app")
+                    Text("zenyth-in.vercel.app")
                 }
             }
         },
