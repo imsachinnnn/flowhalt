@@ -392,9 +392,14 @@ fun AboutZenythDialog(onDismiss: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
                     onClick = { uriHandler.openUri("https://zenyth-in.vercel.app/") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth().height(56.dp),
+                    shape = MaterialTheme.shapes.large
                 ) {
-                    Text("zenyth-in.vercel.app")
+                    Text(
+                        text = "Discover More at Zenyth",
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
+                    )
                 }
             }
         },

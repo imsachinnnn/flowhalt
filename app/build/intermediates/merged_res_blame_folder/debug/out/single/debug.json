@@ -4,31 +4,31 @@
         "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\drawable\\ic_flowhalt_logo.png"
     },
     {
-        "merged": "com.g5guard.app-merged_res-41:/drawable_ic_zenyth_logo.png.flat",
-        "source": "com.g5guard.app-main-43:/drawable/ic_zenyth_logo.png"
+        "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\drawable_flowhalt_text.png.flat",
+        "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\drawable\\flowhalt_text.png"
     },
     {
         "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\drawable_ic_zenyth_logo.png.flat",
         "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\drawable\\ic_zenyth_logo.png"
     },
     {
-        "merged": "com.g5guard.app-merged_res-41:/drawable_flowhalt_text.png.flat",
-        "source": "com.g5guard.app-main-43:/drawable/flowhalt_text.png"
+        "merged": "com.g5guard.app-merged_res-41:/drawable_ic_flowhalt_logo.png.flat",
+        "source": "com.g5guard.app-main-43:/drawable/ic_flowhalt_logo.png"
     },
     {
         "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.g5guard.app-merged_res-41:/drawable_zenyth_original.png.flat",
-        "source": "com.g5guard.app-main-43:/drawable/zenyth_original.png"
+        "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\drawable_zenyth_original.png.flat",
+        "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\drawable\\zenyth_original.png"
+    },
+    {
+        "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\drawable_flowhalt_by_zenyth.png.flat",
+        "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\drawable\\flowhalt_by_zenyth.png"
     },
     {
         "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\xml\\backup_rules.xml"
-    },
-    {
-        "merged": "com.g5guard.app-merged_res-41:/drawable_flowhalt_by_zenyth.png.flat",
-        "source": "com.g5guard.app-main-43:/drawable/flowhalt_by_zenyth.png"
     }
 ]
