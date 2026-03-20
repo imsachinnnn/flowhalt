@@ -1,0 +1,646 @@
+﻿> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources FAILED
+
+[Incubating] Problems report is available at: file:///C:/Users/sachi/OneDrive/Desktop/app/build/reports/problems/problems-report.html
+.\gradlew : 
+At line:1 char:1
++ .\gradlew assembleDebug 
+--stacktrace > 
+stacktrace_output.txt 2>&1 ; G ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : Not 
+   Specified: (:String) [], Remo  
+  teException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+FAILURE: Build failed with an 
+exception.
+
+* What went wrong:
+Execution failed for task 
+':app:processDebugResources'.
+> Cannot mutate the dependencies 
+of configuration 
+':app:debugCompileClasspath' 
+after the configuration was 
+resolved. After a configuration 
+has been observed, it should not 
+be modified.
+
+* Try:
+> Run with --info or --debug 
+option to get more log output.
+> Run with --scan to generate a 
+Build Scan (Powered by 
+Develocity).
+> Get more help at 
+https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecution
+Exception: Execution failed for 
+task ':app:processDebugResources'.
+	at org.gradle.api.internal.tasks.
+execution.CatchExceptionTaskExecut
+er.execute(CatchExceptionTaskExecu
+ter.java:38)
+	at org.gradle.api.internal.tasks.
+execution.EventFiringTaskExecuter$
+1.executeTask(EventFiringTaskExecu
+ter.java:77)
+	at org.gradle.api.internal.tasks.
+execution.EventFiringTaskExecuter$
+1.call(EventFiringTaskExecuter.jav
+a:55)
+	at org.gradle.api.internal.tasks.
+execution.EventFiringTaskExecuter$
+1.call(EventFiringTaskExecuter.jav
+a:52)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$Calla
+bleBuildOperationWorker.execute(De
+faultBuildOperationRunner.java:209
+)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$Calla
+bleBuildOperationWorker.execute(De
+faultBuildOperationRunner.java:204
+)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$2.exe
+cute(DefaultBuildOperationRunner.j
+ava:66)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$2.exe
+cute(DefaultBuildOperationRunner.j
+ava:59)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.execu
+te(DefaultBuildOperationRunner.jav
+a:166)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.execu
+te(DefaultBuildOperationRunner.jav
+a:59)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.call(
+DefaultBuildOperationRunner.java:5
+3)
+	at org.gradle.api.internal.tasks.
+execution.EventFiringTaskExecuter.
+execute(EventFiringTaskExecuter.ja
+va:52)
+	at org.gradle.execution.plan.Loca
+lTaskNodeExecutor.execute(LocalTas
+kNodeExecutor.java:45)
+	at org.gradle.execution.taskgraph
+.DefaultTaskExecutionGraph$InvokeN
+odeExecutorsAction.execute(Default
+TaskExecutionGraph.java:347)
+	at org.gradle.execution.taskgraph
+.DefaultTaskExecutionGraph$InvokeN
+odeExecutorsAction.execute(Default
+TaskExecutionGraph.java:334)
+	at org.gradle.execution.taskgraph
+.DefaultTaskExecutionGraph$BuildOp
+erationAwareExecutionAction.lambda
+$execute$0(DefaultTaskExecutionGra
+ph.java:330)
+	at org.gradle.internal.operations
+.CurrentBuildOperationRef.with(Cur
+rentBuildOperationRef.java:84)
+	at org.gradle.execution.taskgraph
+.DefaultTaskExecutionGraph$BuildOp
+erationAwareExecutionAction.execut
+e(DefaultTaskExecutionGraph.java:3
+30)
+	at org.gradle.execution.taskgraph
+.DefaultTaskExecutionGraph$BuildOp
+erationAwareExecutionAction.execut
+e(DefaultTaskExecutionGraph.java:3
+19)
+	at org.gradle.execution.plan.Defa
+ultPlanExecutor$ExecutorWorker.exe
+cute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.Defa
+ultPlanExecutor$ExecutorWorker.run
+(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent
+.ExecutorPolicy$CatchAndRecordFail
+ures.onExecute(ExecutorPolicy.java
+:64)
+	at org.gradle.internal.concurrent
+.AbstractManagedExecutor$1.run(Abs
+tractManagedExecutor.java:47)
+Caused by: org.gradle.api.InvalidU
+serCodeException: Cannot mutate 
+the dependencies of configuration 
+':app:debugCompileClasspath' 
+after the configuration was 
+resolved. After a configuration 
+has been observed, it should not 
+be modified.
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.validateMutation(DefaultConf
+iguration.java:1222)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.lambda$validateMutationType$
+0(DefaultConfiguration.java:319)
+	at org.gradle.internal.ImmutableA
+ctionSet$SingletonSet.execute(Immu
+tableActionSet.java:226)
+	at org.gradle.api.internal.Defaul
+tDomainObjectCollection.assertCanM
+utate(DefaultDomainObjectCollectio
+n.java:453)
+	at org.gradle.api.internal.Defaul
+tDomainObjectCollection.add(Defaul
+tDomainObjectCollection.java:273)
+	at org.gradle.api.internal.Delega
+tingDomainObjectSet.add(Delegating
+DomainObjectSet.java:115)
+	at org.gradle.api.internal.artifa
+cts.DefaultDependencyConstraintSet
+.addInternalDependencyConstraint(D
+efaultDependencyConstraintSet.java
+:59)
+	at org.gradle.api.internal.artifa
+cts.DefaultDependencyConstraintSet
+.add(DefaultDependencyConstraintSe
+t.java:54)
+	at org.gradle.api.internal.artifa
+cts.DefaultDependencyConstraintSet
+.add(DefaultDependencyConstraintSe
+t.java:30)
+	at org.gradle.api.internal.artifa
+cts.dsl.dependencies.DefaultDepend
+encyConstraintHandler.doAdd(Defaul
+tDependencyConstraintHandler.java:
+198)
+	at org.gradle.api.internal.artifa
+cts.dsl.dependencies.DefaultDepend
+encyConstraintHandler.add(DefaultD
+ependencyConstraintHandler.java:13
+4)
+	at com.android.build.gradle.inter
+nal.dependency.ConstraintHandler$a
+lignWith$1$1.execute(ConstraintHan
+dler.kt:57)
+	at com.android.build.gradle.inter
+nal.dependency.ConstraintHandler$a
+lignWith$1$1.execute(ConstraintHan
+dler.kt:49)
+	at org.gradle.api.internal.artifa
+cts.result.DefaultResolvedComponen
+tResult.eachElement(DefaultResolve
+dComponentResult.java:195)
+	at org.gradle.api.internal.artifa
+cts.result.DefaultResolutionResult
+.allDependencies(DefaultResolution
+Result.java:81)
+	at com.android.build.gradle.inter
+nal.dependency.ConstraintHandler$a
+lignWith$1.execute(ConstraintHandl
+er.kt:49)
+	at com.android.build.gradle.inter
+nal.dependency.ConstraintHandler$a
+lignWith$1.execute(ConstraintHandl
+er.kt:43)
+	at org.gradle.internal.code.Defau
+ltUserCodeApplicationContext$Curre
+ntApplication$1.execute(DefaultUse
+rCodeApplicationContext.java:124)
+	at org.gradle.internal.event.Broa
+dcastDispatch$ActionInvocationHand
+ler.dispatch(BroadcastDispatch.jav
+a:101)
+	at org.gradle.internal.event.Broa
+dcastDispatch$ActionInvocationHand
+ler.dispatch(BroadcastDispatch.jav
+a:89)
+	at org.gradle.internal.event.Abst
+ractBroadcastDispatch.dispatch(Abs
+tractBroadcastDispatch.java:44)
+	at org.gradle.internal.event.Broa
+dcastDispatch$SingletonDispatch.di
+spatch(BroadcastDispatch.java:270)
+	at org.gradle.internal.event.Broa
+dcastDispatch$SingletonDispatch.di
+spatch(BroadcastDispatch.java:172)
+	at org.gradle.internal.event.Abst
+ractBroadcastDispatch.dispatch(Abs
+tractBroadcastDispatch.java:84)
+	at org.gradle.internal.event.Abst
+ractBroadcastDispatch.dispatch(Abs
+tractBroadcastDispatch.java:70)
+	at org.gradle.internal.event.Broa
+dcastDispatch$CompositeDispatch.di
+spatch(BroadcastDispatch.java:382)
+	at org.gradle.internal.event.Broa
+dcastDispatch$CompositeDispatch.di
+spatch(BroadcastDispatch.java:274)
+	at org.gradle.internal.event.List
+enerBroadcast.dispatch(ListenerBro
+adcast.java:160)
+	at org.gradle.internal.event.List
+enerBroadcast.dispatch(ListenerBro
+adcast.java:37)
+	at org.gradle.internal.dispatch.P
+roxyDispatchAdapter$DispatchingInv
+ocationHandler.invoke(ProxyDispatc
+hAdapter.java:92)
+	at jdk.proxy1/jdk.proxy1.$Proxy73
+.beforeResolve(Unknown Source)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation$1.call(DefaultConfiguration.
+java:657)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation$1.call(DefaultConfiguration.
+java:653)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$Calla
+bleBuildOperationWorker.execute(De
+faultBuildOperationRunner.java:209
+)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$Calla
+bleBuildOperationWorker.execute(De
+faultBuildOperationRunner.java:204
+)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$2.exe
+cute(DefaultBuildOperationRunner.j
+ava:66)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$2.exe
+cute(DefaultBuildOperationRunner.j
+ava:59)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.execu
+te(DefaultBuildOperationRunner.jav
+a:166)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.execu
+te(DefaultBuildOperationRunner.jav
+a:59)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.call(
+DefaultBuildOperationRunner.java:5
+3)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.resolveGraphInBuildOperation
+(DefaultConfiguration.java:653)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.lambda$resolveExclusivelyIfR
+equired$3(DefaultConfiguration.jav
+a:645)
+	at org.gradle.api.internal.projec
+t.DefaultProjectStateRegistry$Calc
+ulatedModelValueImpl.update(Defaul
+tProjectStateRegistry.java:533)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.resolveExclusivelyIfRequired
+(DefaultConfiguration.java:640)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.resolveGraphIfRequired(Defau
+ltConfiguration.java:633)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation.access$1400(DefaultConfigura
+tion.java:151)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation$ResolverResultsResolutionRes
+ultProvider.getValue(DefaultConfig
+uration.java:615)
+	at org.gradle.api.internal.artifa
+cts.configurations.DefaultConfigur
+ation$ResolverResultsResolutionRes
+ultProvider.getValue(DefaultConfig
+uration.java:601)
+	at org.gradle.api.internal.artifa
+cts.configurations.ResolutionResul
+tProvider$1.getValue(ResolutionRes
+ultProvider.java:54)
+	at org.gradle.api.internal.artifa
+cts.configurations.ResolutionResul
+tProviderBackedSelectedArtifactSet
+.visitArtifacts(ResolutionResultPr
+oviderBackedSelectedArtifactSet.ja
+va:50)
+	at org.gradle.api.internal.artifa
+cts.ivyservice.resolveengine.artif
+act.SelectedArtifactSet.visitFiles
+(SelectedArtifactSet.java:34)
+	at org.gradle.api.internal.artifa
+cts.configurations.ResolutionBacke
+dFileCollection.visitContents(Reso
+lutionBackedFileCollection.java:75
+)
+	at org.gradle.api.internal.file.A
+bstractFileCollection.visitStructu
+re(AbstractFileCollection.java:361
+)
+	at org.gradle.api.internal.file.c
+ollections.DefaultConfigurableFile
+Collection.lambda$calculateFinaliz
+edValue$1(DefaultConfigurableFileC
+ollection.java:423)
+	at org.gradle.api.internal.file.c
+ollections.UnpackingVisitor.add(Un
+packingVisitor.java:66)
+	at org.gradle.api.internal.file.c
+ollections.DefaultConfigurableFile
+Collection$UnresolvedItemsCollecto
+r.visitContents(DefaultConfigurabl
+eFileCollection.java:635)
+	at org.gradle.api.internal.file.c
+ollections.DefaultConfigurableFile
+Collection.calculateFinalizedValue
+(DefaultConfigurableFileCollection
+.java:423)
+	at org.gradle.api.internal.file.c
+ollections.DefaultConfigurableFile
+Collection.finalizeNow(DefaultConf
+igurableFileCollection.java:125)
+	at org.gradle.api.internal.file.c
+ollections.DefaultConfigurableFile
+Collection.lambda$visitChildren$2(
+DefaultConfigurableFileCollection.
+java:447)
+	at org.gradle.api.internal.provid
+er.ValueState.finalizeOnReadIfNeed
+ed(ValueState.java:140)
+	at org.gradle.api.internal.file.c
+ollections.DefaultConfigurableFile
+Collection.visitChildren(DefaultCo
+nfigurableFileCollection.java:447)
+	at org.gradle.api.internal.file.C
+ompositeFileCollection.visitConten
+ts(CompositeFileCollection.java:11
+2)
+	at org.gradle.api.internal.file.A
+bstractFileCollection.visitStructu
+re(AbstractFileCollection.java:361
+)
+	at org.gradle.api.internal.file.C
+ompositeFileCollection.lambda$visi
+tContents$0(CompositeFileCollectio
+n.java:112)
+	at org.gradle.api.internal.file.c
+ollections.UnpackingVisitor.add(Un
+packingVisitor.java:66)
+	at org.gradle.api.internal.file.c
+ollections.UnpackingVisitor.add(Un
+packingVisitor.java:91)
+	at org.gradle.api.internal.file.D
+efaultFileCollectionFactory$Resolv
+ingFileCollection.visitChildren(De
+faultFileCollectionFactory.java:31
+1)
+	at org.gradle.api.internal.file.C
+ompositeFileCollection.visitConten
+ts(CompositeFileCollection.java:11
+2)
+	at org.gradle.api.internal.file.A
+bstractFileCollection.visitStructu
+re(AbstractFileCollection.java:361
+)
+	at org.gradle.api.internal.file.C
+ompositeFileCollection.lambda$visi
+tContents$0(CompositeFileCollectio
+n.java:112)
+	at org.gradle.api.internal.tasks.
+PropertyFileCollection.visitChildr
+en(PropertyFileCollection.java:48)
+	at org.gradle.api.internal.file.C
+ompositeFileCollection.visitConten
+ts(CompositeFileCollection.java:11
+2)
+	at org.gradle.api.internal.file.A
+bstractFileCollection.visitStructu
+re(AbstractFileCollection.java:361
+)
+	at org.gradle.internal.fingerprin
+t.impl.DefaultFileCollectionSnapsh
+otter.snapshot(DefaultFileCollecti
+onSnapshotter.java:48)
+	at org.gradle.internal.execution.
+impl.DefaultInputFingerprinter$Inp
+utCollectingVisitor.visitInputFile
+Property(DefaultInputFingerprinter
+.java:153)
+	at org.gradle.api.internal.tasks.
+execution.TaskExecution.visitRegul
+arInputs(TaskExecution.java:332)
+	at org.gradle.internal.execution.
+impl.DefaultInputFingerprinter.fin
+gerprintInputProperties(DefaultInp
+utFingerprinter.java:79)
+	at org.gradle.internal.execution.
+steps.AbstractCaptureStateBeforeEx
+ecutionStep.captureExecutionStateW
+ithOutputs(AbstractCaptureStateBef
+oreExecutionStep.java:121)
+	at org.gradle.internal.execution.
+steps.AbstractCaptureStateBeforeEx
+ecutionStep.lambda$captureExecutio
+nState$0(AbstractCaptureStateBefor
+eExecutionStep.java:86)
+	at org.gradle.internal.execution.
+steps.BuildOperationStep$1.call(Bu
+ildOperationStep.java:37)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$Calla
+bleBuildOperationWorker.execute(De
+faultBuildOperationRunner.java:209
+)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$Calla
+bleBuildOperationWorker.execute(De
+faultBuildOperationRunner.java:204
+)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$2.exe
+cute(DefaultBuildOperationRunner.j
+ava:66)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner$2.exe
+cute(DefaultBuildOperationRunner.j
+ava:59)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.execu
+te(DefaultBuildOperationRunner.jav
+a:166)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.execu
+te(DefaultBuildOperationRunner.jav
+a:59)
+	at org.gradle.internal.operations
+.DefaultBuildOperationRunner.call(
+DefaultBuildOperationRunner.java:5
+3)
+	at org.gradle.internal.execution.
+steps.BuildOperationStep.operation
+(BuildOperationStep.java:34)
+	at org.gradle.internal.execution.
+steps.AbstractCaptureStateBeforeEx
+ecutionStep.captureExecutionState(
+AbstractCaptureStateBeforeExecutio
+nStep.java:81)
+	at org.gradle.internal.execution.
+steps.AbstractCaptureStateBeforeEx
+ecutionStep.execute(AbstractCaptur
+eStateBeforeExecutionStep.java:65)
+	at org.gradle.internal.execution.
+steps.AbstractCaptureStateBeforeEx
+ecutionStep.execute(AbstractCaptur
+eStateBeforeExecutionStep.java:45)
+	at org.gradle.internal.execution.
+steps.AbstractSkipEmptyWorkStep.ex
+ecuteWithNonEmptySources(AbstractS
+kipEmptyWorkStep.java:136)
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.0.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+13 actionable tasks: 2 executed, 11 up-to-date
+	at org.gradle.internal.execution.
+steps.AbstractSkipEmptyWorkStep.ex
+ecute(AbstractSkipEmptyWorkStep.ja
+va:61)
+	at org.gradle.internal.execution.
+steps.AbstractSkipEmptyWorkStep.ex
+ecute(AbstractSkipEmptyWorkStep.ja
+va:38)
+	at org.gradle.internal.execution.
+steps.legacy.MarkSnapshottingInput
+sStartedStep.execute(MarkSnapshott
+ingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.
+steps.LoadPreviousExecutionStateSt
+ep.execute(LoadPreviousExecutionSt
+ateStep.java:36)
+	at org.gradle.internal.execution.
+steps.LoadPreviousExecutionStateSt
+ep.execute(LoadPreviousExecutionSt
+ateStep.java:23)
+	at org.gradle.internal.execution.
+steps.HandleStaleOutputsStep.execu
+te(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.
+steps.HandleStaleOutputsStep.execu
+te(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.
+steps.AssignMutableWorkspaceStep.l
+ambda$execute$0(AssignMutableWorks
+paceStep.java:35)
+	at org.gradle.api.internal.tasks.
+execution.TaskExecution$4.withWork
+space(TaskExecution.java:297)
+	at org.gradle.internal.execution.
+steps.AssignMutableWorkspaceStep.e
+xecute(AssignMutableWorkspaceStep.
+java:31)
+	at org.gradle.internal.execution.
+steps.AssignMutableWorkspaceStep.e
+xecute(AssignMutableWorkspaceStep.
+java:22)
+	at org.gradle.internal.execution.
+steps.ChoosePipelineStep.execute(C
+hoosePipelineStep.java:40)
+	at org.gradle.internal.execution.
+steps.ChoosePipelineStep.execute(C
+hoosePipelineStep.java:23)
+	at org.gradle.internal.execution.
+steps.ExecuteWorkBuildOperationFir
+ingStep.lambda$execute$2(ExecuteWo
+rkBuildOperationFiringStep.java:67
+)
+	at org.gradle.internal.execution.
+steps.ExecuteWorkBuildOperationFir
+ingStep.execute(ExecuteWorkBuildOp
+erationFiringStep.java:67)
+	at org.gradle.internal.execution.
+steps.ExecuteWorkBuildOperationFir
+ingStep.execute(ExecuteWorkBuildOp
+erationFiringStep.java:39)
+	at org.gradle.internal.execution.
+steps.IdentityCacheStep.execute(Id
+entityCacheStep.java:46)
+	at org.gradle.internal.execution.
+steps.IdentityCacheStep.execute(Id
+entityCacheStep.java:34)
+	at org.gradle.internal.execution.
+steps.IdentifyStep.execute(Identif
+yStep.java:47)
+	at org.gradle.internal.execution.
+steps.IdentifyStep.execute(Identif
+yStep.java:34)
+	at org.gradle.internal.execution.
+impl.DefaultExecutionEngine$1.exec
+ute(DefaultExecutionEngine.java:64
+)
+	at org.gradle.api.internal.tasks.
+execution.ExecuteActionsTaskExecut
+er.executeIfValid(ExecuteActionsTa
+skExecuter.java:132)
+	at org.gradle.api.internal.tasks.
+execution.ExecuteActionsTaskExecut
+er.execute(ExecuteActionsTaskExecu
+ter.java:121)
+	at org.gradle.api.internal.tasks.
+execution.ProblemsTaskPathTracking
+TaskExecuter.execute(ProblemsTaskP
+athTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.
+execution.FinalizePropertiesTaskEx
+ecuter.execute(FinalizePropertiesT
+askExecuter.java:46)
+	at org.gradle.api.internal.tasks.
+execution.ResolveTaskExecutionMode
+Executer.execute(ResolveTaskExecut
+ionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.
+execution.SkipTaskWithNoActionsExe
+cuter.execute(SkipTaskWithNoAction
+sExecuter.java:57)
+	at org.gradle.api.internal.tasks.
+execution.SkipOnlyIfTaskExecuter.e
+xecute(SkipOnlyIfTaskExecuter.java
+:74)
+	at org.gradle.api.internal.tasks.
+execution.CatchExceptionTaskExecut
+er.execute(CatchExceptionTaskExecu
+ter.java:36)
+	... 22 more
+
+
+BUILD FAILED in 1s
