@@ -14,7 +14,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.ui.platform.LocalUriHandler
+import kotlinx.coroutines.delay
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.flow.StateFlow
@@ -41,18 +51,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme(colorScheme = darkColorScheme()) {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    FlowHaltDashboard(
-                        networkStateFlow = GuardService.networkState,
-                        isRunningFlow = GuardService.isRunning,
-                        onStartGuard = { method ->
-                            startGuardService(method)
-                        },
-                        onStopGuard = {
-                            stopGuardService()
-                        },
-                        onRequestVpn = {
-                            requestVpnPermission()
-                        }
+                    MainAppNavigation(
+                        onRequestVpn = { requestVpnPermission() },
+                        onStartGuard = { startGuardService(it) },
+                        onStopGuard = { stopGuardService() }
                     )
                 }
             }
@@ -97,6 +99,108 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun MainAppNavigation(
+    onRequestVpn: () -> Unit,
+    onStartGuard: (String) -> Unit,
+    onStopGuard: () -> Unit
+) {
+    var showSplash by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        delay(3500) // 3.5 seconds splash logic
+        showSplash = false
+    }
+
+    AnimatedContent(
+        targetState = showSplash,
+        transitionSpec = {
+            fadeIn(animationSpec = tween(1000)) togetherWith fadeOut(animationSpec = tween(1000))
+        },
+        label = "SplashToDashboard"
+    ) { isSplash ->
+        if (isSplash) {
+            FlowHaltSplashScreen()
+        } else {
+            FlowHaltDashboard(
+                networkStateFlow = GuardService.networkState,
+                isRunningFlow = GuardService.isRunning,
+                onStartGuard = onStartGuard,
+                onStopGuard = onStopGuard,
+                onRequestVpn = onRequestVpn
+            )
+        }
+    }
+}
+
+@Composable
+fun FlowHaltSplashScreen() {
+    var startFlowHaltAnim by remember { mutableStateOf(false) }
+    var startZenythAnim by remember { mutableStateOf(false) }
+
+    val logoAlpha by animateFloatAsState(
+        targetValue = if (startFlowHaltAnim) 1f else 0f,
+        animationSpec = tween(durationMillis = 1000, easing = FastOutSlowInEasing),
+        label = "logoAlpha"
+    )
+    
+    val logoOffset by animateFloatAsState(
+        targetValue = if (startFlowHaltAnim) 0f else 50f,
+        animationSpec = tween(durationMillis = 1000, easing = FastOutSlowInEasing),
+        label = "logoOffset"
+    )
+
+    val zenythAlpha by animateFloatAsState(
+        targetValue = if (startZenythAnim) 1f else 0f,
+        animationSpec = tween(durationMillis = 800, delayMillis = 500),
+        label = "zenythAlpha"
+    )
+
+    LaunchedEffect(Unit) {
+        delay(300)
+        startFlowHaltAnim = true
+        delay(1200)
+        startZenythAnim = true
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_flowhalt_logo),
+                contentDescription = "FlowHalt Logo",
+                modifier = Modifier
+                    .size(100.dp)
+                    .graphicsLayer {
+                        alpha = logoAlpha
+                        translationY = logoOffset
+                    }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.graphicsLayer { alpha = zenythAlpha }
+            ) {
+                Text(
+                    text = "by ",
+                    fontSize = 18.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.ic_zenyth_logo),
+                    contentDescription = "Zenyth Logo",
+                    modifier = Modifier.height(36.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
 fun FlowHaltDashboard(
     networkStateFlow: StateFlow<NetworkGeneration>,
     isRunningFlow: StateFlow<Boolean>,
@@ -107,28 +211,44 @@ fun FlowHaltDashboard(
     var selectedMethod by remember { mutableStateOf("A") }
     val isRunning by isRunningFlow.collectAsState()
     val networkState by networkStateFlow.collectAsState()
+    var showAboutDialog by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp, vertical = 40.dp),
+            .padding(horizontal = 24.dp, vertical = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        // App Header
-        Text(
-            text = "FlowHalt",
-            fontSize = 36.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = MaterialTheme.colorScheme.primary,
-            letterSpacing = 1.sp
-        )
-        Text(
-            text = "Intelligent Overage Protection",
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
-        )
+        // App Header Row
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column {
+                Text(
+                    text = "FlowHalt",
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = MaterialTheme.colorScheme.primary,
+                    letterSpacing = 1.sp
+                )
+                Text(
+                    text = "Intelligent Overage Protection",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                )
+            }
+            IconButton(onClick = { showAboutDialog = true }) {
+                Icon(
+                    imageVector = Icons.Default.Info, 
+                    contentDescription = "About",
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
+        }
 
         Spacer(modifier = Modifier.height(48.dp))
 
@@ -225,6 +345,58 @@ fun FlowHaltDashboard(
             )
         }
     }
+
+    if (showAboutDialog) {
+        AboutZenythDialog(onDismiss = { showAboutDialog = false })
+    }
+}
+
+@Composable
+fun AboutZenythDialog(onDismiss: () -> Unit) {
+    val uriHandler = LocalUriHandler.current
+    
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(text = "About FlowHalt", fontWeight = FontWeight.Bold)
+        },
+        text = {
+            Column {
+                Text(text = "How it Works:")
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "FlowHalt constantly monitors your cellular network type. The moment it detects a drop from 5G to 4G, it automatically pauses your data using your selected method, ensuring you never accidentally consume slow or metered 4G data instead of unlimited 5G data.",
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Divider()
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Developed by Zenyth",
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Text(
+                    text = "A one-man startup.",
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                TextButton(
+                    onClick = { uriHandler.openUri("https://zenyth-in.vercel.app/") },
+                    contentPadding = PaddingValues(0.dp)
+                ) {
+                    Text("Visit website: zenyth-in.vercel.app")
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Close")
+            }
+        }
+    )
 }
 
 @Composable

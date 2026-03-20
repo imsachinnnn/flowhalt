@@ -1,10 +1,18 @@
 [
     {
-        "merged": "com.g5guard.app-merged_res-41:/xml_backup_rules.xml.flat",
-        "source": "com.g5guard.app-main-43:/xml/backup_rules.xml"
+        "merged": "com.g5guard.app-merged_res-41:/drawable_ic_zenyth_logo.png.flat",
+        "source": "com.g5guard.app-main-43:/drawable/ic_zenyth_logo.png"
     },
     {
-        "merged": "com.g5guard.app-merged_res-41:/xml_data_extraction_rules.xml.flat",
-        "source": "com.g5guard.app-main-43:/xml/data_extraction_rules.xml"
+        "merged": "com.g5guard.app-merged_res-41:/drawable_ic_flowhalt_logo.png.flat",
+        "source": "com.g5guard.app-main-43:/drawable/ic_flowhalt_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-merged_res-41:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\sachi\\.gradle\\daemon\\8.7\\com.g5guard.app-main-43:\\xml\\backup_rules.xml"
     }
 ]
